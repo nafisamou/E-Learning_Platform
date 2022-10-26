@@ -1,0 +1,12 @@
+.main-container{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    margin: 30px;
+}
+.side-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 45px;
+    margin-bottom: 200px;
+    margin-left: 50px;
+}
