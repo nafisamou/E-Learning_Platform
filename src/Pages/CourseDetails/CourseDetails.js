@@ -1,5 +1,5 @@
 import React from "react";
-import { FaStar } from "react-icons/fa";
+import { FaLock, FaStar } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
 
 const CourseDetails = () => {
@@ -59,7 +59,7 @@ const CourseDetails = () => {
           <div className="card-actions justify-end">
             <Link to={`/courses/${_id}`}>
               {" "}
-              <button className="btn btn-primary">Premium Access</button>
+              <button className="btn btn-primary">Get Premium Access <FaLock className="ml-2"></FaLock></button>
             </Link>
           </div>
         </div>
