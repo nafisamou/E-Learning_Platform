@@ -1,24 +1,63 @@
 import React from "react";
+import { FaStar } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
 
 const CourseDetails = () => {
   const course = useLoaderData();
-  const { title, img, ratings, details, _id, price } = course;
+  const {
+    title,
+    thumbnail,
+    ratings,
+    details,
+    _id,
+    price,
+    resource,
+    certificate,
+    support,
+    instructor,
+  } = course;
   return (
     <div className="m-8">
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure>
-          <img className="w-64" src={img} alt="Album" />
+          <img
+            className="w-[440px] px-4 rounded-2xl"
+            src={thumbnail}
+            alt="Album"
+          />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">Name: {title}</h2>
+          <h2 className="card-title">{title}</h2>
+
           <p>{details}</p>
-          <p className=""><strong>Price:</strong> {price}</p>
+          <p>
+            <strong className="mr-1">Instructor:</strong> {instructor}
+          </p>
           <p className="">
-            <strong className=" font-bold">Ratings:</strong><span className="ml-2">{ratings}</span> star
+            <strong className="mr-1">Price: </strong>
+            <span className="text-red-500">$</span> {price}{" "}
+          </p>
+
+          <p>
+            <strong className="mr-1">Resources:</strong> {resource}
+          </p>
+          <p>
+            <strong className="mr-1">Certificate:</strong> {certificate}
+          </p>
+          <p>
+            <strong className="mr-1">Access:</strong> {support}
+          </p>
+
+          <p className="flex ">
+            <strong className=" font-bold">Ratings:</strong>{" "}
+            <p className="flex items-center">
+              {" "}
+              <FaStar className="text-warning ml-2"></FaStar>{" "}
+              <span className="ml-1">{ratings}</span>
+            </p>
           </p>
           <div className="card-actions justify-end">
-            <Link to={`courses/${_id}`}>
+            <Link to={`/courses/${_id}`}>
               {" "}
               <button className="btn btn-primary">Premium Access</button>
             </Link>

@@ -2,11 +2,13 @@ import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { FaUser } from "react-icons/fa";
+
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const handleLogOut = () => {
-    logOut()
+
+  const handleLogout = () => {
+    logout()
       .then(() => {})
       .catch((error) => console.error(error));
   };
@@ -84,57 +86,44 @@ const Header = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "font-medium tracking-wide text-blue-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                    : "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 text-xl"
-                }
-              >
-                <div className="fw-bold text-lg">
-                  {user?.uid ? (
-                    <>
-                      <span className="">{user?.displayName}</span>
-                      <button variant="light" onClick={handleLogOut}>
-                        Log out
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      <span className="">
-                        <Link to="/login" className="me-2 fw-bold">
-                          Login
-                        </Link>
-                      </span>
-                      <span className="m-2">
-                        <Link to="/register">Register</Link>
-                      </span>
-                    </>
-                  )}
-                </div>
-              </NavLink>
+              <div className="fw-bold text-lg">
+                {user?.uid ? (
+                  <>
+                    <span className="ml-5">{user?.displayName}</span>
+                    <button className="btn btn-link" onClick={handleLogout}>
+                      Log Out
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <span className="">
+                      <Link to="/login" className=" fw-bold btn btn-link">
+                        Login
+                      </Link>
+                    </span>
+                    <span className="">
+                      <Link to="/register" className="btn btn-link">
+                        Register
+                      </Link>
+                    </span>
+                  </>
+                )}
+              </div>
             </li>
             <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "font-medium tracking-wide text-blue-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                    : "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 text-xl"
-                }
-              >
-                <Link to="/profile" className="ms-2">
-                  {user?.photoURL ? (
-                    <img
-                      style={{ height: "30px" }}
-                      roundedCircle
-                      src={user?.photoURL}
-                      alt="/"
-                    />
-                  ) : (
-                    <FaUser></FaUser>
-                  )}
-                </Link>
-              </NavLink>
+              <Link to="/profile" className="btn btn-link ml-[-30px]">
+                {user?.photoURL ? (
+                  <img
+                    className="rounded-full w-7"
+                    title={user?.displayName}
+                    style={{ height: "30px" }}
+                    src={user?.photoURL}
+                    alt="/"
+                  />
+                ) : (
+                  <FaUser></FaUser>
+                )}
+              </Link>
             </li>
           </ul>
           <div className="lg:hidden ">
@@ -213,13 +202,13 @@ const Header = () => {
                       </li>
                       <li>
                         <Link
-                          to="/statistics"
-                          aria-label="statistics"
-                          title="Statistics"
+                          to="/courses"
+                          aria-label="courses"
+                          title="Courses"
                           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                         >
                           <div className="relative py-3">
-                            <p>Statistics</p>
+                            <p>Courses</p>
                             <p className="absolute bottom-5 left-9"></p>
                           </div>
                         </Link>
