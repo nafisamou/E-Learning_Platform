@@ -77,19 +77,19 @@ const Register = () => {
       .catch((error) => toast.error(error.message));
   };
 
-  // GitHub SignIn
-  const handleGitHubSignIn = () => {
-    signInWithGitHub
-      .then((result) => {
-        const user = result.user;
-        setUser(user);
-        console.error(user);
-        navigate(from, { replace: true });
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
-  };
+ // Github SignIn
+ const handleGithubSignIn = () => {
+  signInWithGitHub()
+    .then((result) => {
+      const user = result.user;
+      setUser(user);
+      console.error(user);
+      navigate(from, { replace: true });
+    })
+    .catch((error) => {
+      toast.error(error.message);;
+    });
+};
 
   const handleAccepted = (event) => {
     setAccepted(event.target.checked);
@@ -214,7 +214,7 @@ const Register = () => {
           </button>
 
           <button
-            onClick={handleGitHubSignIn}
+            onClick={handleGithubSignIn}
             aria-label="Log in with GitHub"
             className="p-3 rounded-sm"
           >

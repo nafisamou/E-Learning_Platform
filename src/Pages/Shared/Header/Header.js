@@ -144,11 +144,6 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              {/* <div className="form-control">
-                <label className="label cursor-pointer">
-                  <input type="checkbox" className="toggle toggle-primary" />
-                </label>
-              </div> */}
               <InputGroup>
                 <ThemeContext.Consumer>
                   {({ changeTheme }) => (

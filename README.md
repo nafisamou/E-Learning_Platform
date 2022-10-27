@@ -29,7 +29,7 @@
 * Icon -> [Reacticon](https://react-icons.github.io/react-icons/)
 * React-Toast -> [React-toast](https://react-hot-toast.com/)
 
-# Toggole-Button:
+# Toggle-Button:
 * ReactStrap -> [ReactStrap](https://www.npmjs.com/package/reactstrap)
-* Dark-Light Mode :-> [Dark-Light-Toggole](https://levelup.gitconnected.com/dark-mode-in-react-533faaee3c6e)
+* Dark-Light Mode :-> [Dark-Light-Toggle](https://levelup.gitconnected.com/dark-mode-in-react-533faaee3c6e)
 
