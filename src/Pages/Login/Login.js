@@ -7,12 +7,18 @@ import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [userEmail, setUserEmail] = useState("");
   const [error, setError] = useState("");
   const [user, setUser] = useState({});
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  const { signInWithGoogle, signInWithGitHub, signIn, setLoading } =
-    useContext(AuthContext);
+  const {
+    signInWithGoogle,
+    resetPassword,
+    signInWithGitHub,
+    signIn,
+    setLoading,
+  } = useContext(AuthContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -44,13 +50,14 @@ const Login = () => {
 
   // Google SignIn
   const handleGoogleSignIn = () => {
-    signInWithGoogle().then((result) => {
-      console.log(result.user);
-      navigate(from, { replace: true });
-    })
-    .catch((error) => {
-      toast.error(error.message);;
-    });
+    signInWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
   // Github SignIn
   const handleGithubSignIn = () => {
@@ -62,8 +69,17 @@ const Login = () => {
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        toast.error(error.message);;
+        toast.error(error.message);
       });
+  };
+
+  //Reset Pass
+  const handleReset = () => {
+    resetPassword(userEmail)
+      .then(() => {
+        toast.success("Reset link has been sent, please check email");
+      })
+      .catch((error) => toast.error(error.message));
   };
 
   return (
@@ -87,7 +103,7 @@ const Login = () => {
                 Email address
               </label>
               <input
-                //   onBlur={event => setUserEmail(event.target.value)}
+                onBlur={(event) => setUserEmail(event.target.value)}
                 type="email"
                 name="email"
                 id="email"
@@ -128,7 +144,7 @@ const Login = () => {
         </form>
         <div className="space-y-1">
           <button
-            //   onClick={handleReset}
+            onClick={handleReset}
             className="text-xs hover:underline text-gray-400"
           >
             Forgot password?
