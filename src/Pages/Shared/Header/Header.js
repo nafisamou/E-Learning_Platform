@@ -2,7 +2,8 @@ import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { FaUser } from "react-icons/fa";
-import  pic  from "../../../assets/layers.png";
+import pic from "../../../assets/layers.png";
+import "./Header.css";
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
@@ -24,8 +25,6 @@ const Header = () => {
             className="inline-flex items-center"
           >
             <img className="w-6 h-6 mr-1" src={pic} alt="" />
-
-           
 
             <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
               Programming Language
@@ -140,6 +139,14 @@ const Header = () => {
                   <FaUser></FaUser>
                 )}
               </Link>
+            </li>
+            <li>
+              <div className="form-control">
+                <label className="label cursor-pointer">
+                  <input type="checkbox" className="toggle toggle-primary" />
+                </label>
+              </div>
+              
             </li>
           </ul>
           <div className="lg:hidden ">
