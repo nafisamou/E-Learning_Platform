@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Register = () => {
+  const [showPass, setShowPass] = useState(false);
   const [error, setError] = useState("");
   const [user, setUser] = useState(null);
   const [accepted, setAccepted] = useState(false);
@@ -77,19 +78,19 @@ const Register = () => {
       .catch((error) => toast.error(error.message));
   };
 
- // Github SignIn
- const handleGithubSignIn = () => {
-  signInWithGitHub()
-    .then((result) => {
-      const user = result.user;
-      setUser(user);
-      console.error(user);
-      navigate(from, { replace: true });
-    })
-    .catch((error) => {
-      toast.error(error.message);;
-    });
-};
+  // Github SignIn
+  const handleGithubSignIn = () => {
+    signInWithGitHub()
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        console.error(user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
 
   const handleAccepted = (event) => {
     setAccepted(event.target.checked);
@@ -156,13 +157,17 @@ const Register = () => {
                 </label>
               </div>
               <input
-                type="password"
+                type={showPass ? "text" : "password"}
+                // type="password"
                 name="password"
                 id="password"
                 placeholder="*******"
                 required
                 className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900"
               />
+              <button onClick={() => setShowPass(!showPass)}>
+              Show Password
+            </button>
             </div>
           </div>
           <div className="space-y-2">

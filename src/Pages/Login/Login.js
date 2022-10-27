@@ -7,6 +7,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
   const navigate = useNavigate();
+   const [showPass, setShowPass] = useState(false);
   const [userEmail, setUserEmail] = useState("");
   const [error, setError] = useState("");
   const [user, setUser] = useState({});
@@ -119,17 +120,17 @@ const Login = () => {
                 </label>
               </div>
               <input
-                // type={showPass ? 'text' : 'password'}
-                type="password"
+                type={showPass ? 'text' : 'password'}
+                // type="password"
                 name="password"
                 id="password"
                 placeholder="*******"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900"
               />
 
-              {/* <button onClick={() => setShowPass(!showPass)}>
+              <button onClick={() => setShowPass(!showPass)}>
               Show Password
-            </button> */}
+            </button>
             </div>
           </div>
 
