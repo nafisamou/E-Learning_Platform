@@ -5,9 +5,12 @@ import { FaUser } from "react-icons/fa";
 import pic from "../../../assets/layers.png";
 import "./Header.css";
 
+import { Button, InputGroup } from "reactstrap";
+import { ThemeContext, themes } from "../../../contexts/ThemeContext";
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = React.useState(true);
 
   const handleLogout = () => {
     logout()
@@ -141,12 +144,38 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <div className="form-control">
+              {/* <div className="form-control">
                 <label className="label cursor-pointer">
                   <input type="checkbox" className="toggle toggle-primary" />
                 </label>
-              </div>
-              
+              </div> */}
+              <InputGroup>
+                <ThemeContext.Consumer>
+                  {({ changeTheme }) => (
+                    <Button
+                      color="link"
+                      onClick={() => {
+                        setDarkMode(!darkMode);
+                        changeTheme(darkMode ? themes.light : themes.dark);
+                      }}
+                    >
+                      <i
+                        className={darkMode ? "fas fa-sun" : "fas fa-moon"}
+                      ></i>
+                      <span className="d-lg-none d-md-block">
+                        <div className="form-control">
+                          <label className="label cursor-pointer">
+                            <input
+                              type="checkbox"
+                              className="toggle toggle-primary"
+                            />
+                          </label>
+                        </div>
+                      </span>
+                    </Button>
+                  )}
+                </ThemeContext.Consumer>
+              </InputGroup>
             </li>
           </ul>
           <div className="lg:hidden ">

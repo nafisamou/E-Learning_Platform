@@ -6,12 +6,16 @@ import reportWebVitals from "./reportWebVitals";
 
 import AuthProvider from "./contexts/AuthProvider";
 
+import ThemeContextWrapper from "./contexts/ThemeContextWrapper";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-   <AuthProvider>
-   <App />
-   </AuthProvider>
+    <AuthProvider>
+      <ThemeContextWrapper>
+        <App />
+      </ThemeContextWrapper>
+    </AuthProvider>
   </React.StrictMode>
 );
 
