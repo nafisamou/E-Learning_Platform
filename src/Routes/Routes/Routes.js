@@ -33,19 +33,19 @@ export const routes = createBrowserRouter([
         path: "/category/:id",
         element: <Category></Category>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/category/${params.id}`),
+          fetch(`https://server-theta-jet.vercel.app/category/${params.id}`),
       },
       {
         path: "/courses",
         element: <Course></Course>,
-        loader: () => fetch("http://localhost:5000/courses"),
+        loader: () => fetch("https://server-theta-jet.vercel.app/courses"),
       },
 
       {
         path: "/courses/:id",
         element: <CourseDetails></CourseDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/courses/${params.id}`),
+          fetch(`https://server-theta-jet.vercel.app/courses/${params.id}`),
       },
       {
         path: "/checkout/:id",
@@ -55,7 +55,7 @@ export const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/courses/${params.id}`),
+          fetch(`https://server-theta-jet.vercel.app/courses/${params.id}`),
       },
       {
         path: "/login",

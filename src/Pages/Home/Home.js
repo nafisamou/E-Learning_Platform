@@ -19,7 +19,7 @@ const Home = () => {
               </h2>
               <p className="text-base text-gray-700 md:text-lg">
                 A programming language is a system of notation for writing
-                computer programs.[1] Most programming languages are text-based
+                computer programs. Most programming languages are text-based
                 formal languages, but they may also be graphical. They are a
                 kind of computer language.Some
                 languages have both, with the basic language defined by a
@@ -49,8 +49,8 @@ const Home = () => {
           </div>
 
           <div className="relative lg:w-1/2 ">
-            <div className="w-full lg:w-4/5 lg:ml-auto h-56  sm:h-96 mb-28">
-              <Lottie animationData={Course} loop={true} />
+            <div className="w-full lg:w-4/5 lg:ml-auto h-56 sm:h-96 mb-10">
+              <Lottie  animationData={Course} loop={true} />
             </div>
           </div>
         </div>

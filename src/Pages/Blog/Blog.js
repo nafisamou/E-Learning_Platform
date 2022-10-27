@@ -34,9 +34,9 @@ const Blog = () => {
                   />
                 </svg> */}
 
-                <span className="relative">Q/</span>
+                <span className="relative">Q/A?</span>
               </span>{" "}
-              A?
+              
             </h2>
           </div>
         </div>

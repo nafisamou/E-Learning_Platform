@@ -25,7 +25,8 @@ const CourseCard = ({ course }) => {
             )}
           </p>
           <p className="">
-            <strong className="mr-1">Price: </strong><span className="text-red-500">$</span> {price}{" "}
+            <strong className="mr-1">Price: </strong>
+            <span className="text-red-500">$</span> {price}{" "}
           </p>
           <p className="flex">
             <strong className=" font-bold">Ratings:</strong>{" "}
@@ -38,7 +39,9 @@ const CourseCard = ({ course }) => {
           <div className="card-actions justify-end">
             <Link to={`/courses/${_id}`}>
               {" "}
-              <button className="btn btn-primary">Course Details <FaArrowRight className="ml-3"></FaArrowRight></button>
+              <button className="btn btn-primary">
+                Course Details <FaArrowRight className="ml-3"></FaArrowRight>
+              </button>
             </Link>
           </div>
         </div>
