@@ -6,13 +6,18 @@ import { AuthContext } from "../../contexts/AuthProvider";
 
 const Register = () => {
   const [error, setError] = useState("");
-  const [user, setUser] = useState({});
-  // const [accepted, setAccepted] = useState(false);
+  const [user, setUser] = useState(null);
+  const [accepted, setAccepted] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  const { createUser, updateUserProfile, verifyEmail, signInWithGoogle, signInWithGitHub } =
-    useContext(AuthContext);
+  const {
+    createUser,
+    updateUserProfile,
+    verifyEmail,
+    signInWithGoogle,
+    signInWithGitHub,
+  } = useContext(AuthContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -33,10 +38,9 @@ const Register = () => {
         handleEmailVerification();
         toast.success("Please Verify Your Email Address");
       })
-      .catch((e) => {
-        console.error(e);
+      .catch((error) => {
         toast.error(error.message);
-        setError(e.message);
+        setError(error.message);
       });
   };
 
@@ -46,69 +50,36 @@ const Register = () => {
       photoURL: photoURL,
     };
     updateUserProfile(profile)
-      .then(() => {})
+      .then(() => {
+        toast.success("Name Updated");
+      })
       .catch((error) => {
-        console.error(error);
+        toast.error(error.message);
       });
   };
 
   const handleEmailVerification = () => {
     verifyEmail()
-      .then(() => { toast.success("Please check your email for verification link");
-      navigate(from, { replace: true });})
-      .catch((error) => console.error(error));
+      .then(() => {
+        toast.success("Please check your email for verification link");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => toast.error(error.message));
   };
-  // const handleAccepted = (event) => {
-  //   setAccepted(event.target.checked);
-  // };
-
-  // Signup using Email & Pass
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-
-  //   const name = event.target.name.value;
-  //   const email = event.target.email.value;
-  //   const password = event.target.password.value;
-
-  //   //1. Create Account
-  //   createUser(email, password)
-  //     .then((result) => {
-  //       console.log(result.user);
-
-  //       //2. Update Name
-  //       updateUserProfile(name)
-  //         .then(() => {
-  //           toast.success("Name Updated");
-
-  //           //3. Email verification
-  //           verifyEmail()
-  //             .then(() => {
-  //               toast.success("Please check your email for verification link");
-  //               navigate(from, { replace: true });
-  //             })
-  //             .catch((error) => {
-  //               toast.error(error.message);
-  //             });
-  //         })
-  //         .catch((error) => {
-  //           toast.error(error.message);
-  //         });
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
 
   // Google SignIn
   const handleGoogleSignIn = () => {
-    signInWithGoogle().then((result) => {
-      console.log(result.user);
-      navigate(from, { replace: true });
-    });
+    signInWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => toast.error(error.message));
   };
-
 
   // GitHub SignIn
   const handleGitHubSignIn = () => {
-   signInWithGitHub
+    signInWithGitHub
       .then((result) => {
         const user = result.user;
         setUser(user);
@@ -116,10 +87,13 @@ const Register = () => {
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log("error:", error);
+        toast.error(error.message);
       });
   };
 
+  const handleAccepted = (event) => {
+    setAccepted(event.target.checked);
+  };
 
   return (
     <div className="flex justify-center items-center pt-8">
@@ -192,9 +166,24 @@ const Register = () => {
             </div>
           </div>
           <div className="space-y-2">
+            <div className="form-control">
+              <label className="label cursor-pointer">
+                <span className="label-text">
+                  <>
+                    Accept <Link to="/terms">Terms & Conditions</Link>
+                  </>
+                </span>
+                <input
+                  type="checkbox"
+                  onClick={handleAccepted}
+                  className="checkbox checkbox-primary"
+                />
+              </label>
+            </div>
             <div>
               <button
                 type="submit"
+                disabled={!accepted}
                 className="w-full px-8 py-3 font-semibold rounded-md bg-blue-800 hover:bg-blue-700 hover:text-white text-gray-100"
               >
                 Sign Up
@@ -224,7 +213,11 @@ const Register = () => {
             </svg>
           </button>
 
-          <button onClick={handleGitHubSignIn} aria-label="Log in with GitHub" className="p-3 rounded-sm">
+          <button
+            onClick={handleGitHubSignIn}
+            aria-label="Log in with GitHub"
+            className="p-3 rounded-sm"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
@@ -234,6 +227,7 @@ const Register = () => {
             </svg>
           </button>
         </div>
+
         <p className="px-6 text-sm text-center text-gray-400">
           Already have an account yet?{" "}
           <Link to="/login" className="hover:underline text-gray-600">

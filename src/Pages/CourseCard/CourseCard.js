@@ -1,5 +1,5 @@
 import React from "react";
-import { FaStar } from "react-icons/fa";
+import { FaArrowRight, FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const CourseCard = ({ course }) => {
@@ -38,7 +38,7 @@ const CourseCard = ({ course }) => {
           <div className="card-actions justify-end">
             <Link to={`/courses/${_id}`}>
               {" "}
-              <button className="btn btn-primary">Course Details</button>
+              <button className="btn btn-primary">Course Details <FaArrowRight className="ml-3"></FaArrowRight></button>
             </Link>
           </div>
         </div>

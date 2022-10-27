@@ -2,6 +2,7 @@ import React from "react";
 import { FaLock, FaStar } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
 
+
 const CourseDetails = () => {
   const course = useLoaderData();
   const {
@@ -21,7 +22,7 @@ const CourseDetails = () => {
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure>
           <img
-            className="w-[440px] px-4 rounded-2xl"
+            className="w-[400px] image-full px-4  rounded-2xl "
             src={thumbnail}
             alt="Album"
           />
@@ -57,9 +58,11 @@ const CourseDetails = () => {
             </p>
           </p>
           <div className="card-actions justify-end">
-            <Link to={`/courses/${_id}`}>
+            <Link to={`/checkout/${_id}`}>
               {" "}
-              <button className="btn btn-primary">Get Premium Access <FaLock className="ml-2"></FaLock></button>
+              <button className="btn btn-primary">
+                Get Premium Access <FaLock className="ml-3"></FaLock>
+              </button>
             </Link>
           </div>
         </div>

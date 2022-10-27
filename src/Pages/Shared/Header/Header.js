@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { FaUser } from "react-icons/fa";
+import  pic  from "../../../assets/layers.png";
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
@@ -22,7 +23,10 @@ const Header = () => {
             title="Programming Language"
             className="inline-flex items-center"
           >
-            icon
+            <img className="w-6 h-6 mr-1" src={pic} alt="" />
+
+           
+
             <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
               Programming Language
             </span>
@@ -90,19 +94,31 @@ const Header = () => {
                 {user?.uid ? (
                   <>
                     <span className="ml-5">{user?.displayName}</span>
-                    <button className="btn btn-link" onClick={handleLogout}>
+                    <button
+                      title="Logout"
+                      className="btn btn-link"
+                      onClick={handleLogout}
+                    >
                       Log Out
                     </button>
                   </>
                 ) : (
                   <>
                     <span className="">
-                      <Link to="/login" className=" fw-bold btn btn-link">
+                      <Link
+                        to="/login"
+                        title="LogIn"
+                        className=" fw-bold btn btn-link"
+                      >
                         Login
                       </Link>
                     </span>
                     <span className="">
-                      <Link to="/register" className="btn btn-link">
+                      <Link
+                        to="/register"
+                        title="Register"
+                        className="btn btn-link"
+                      >
                         Register
                       </Link>
                     </span>
@@ -155,8 +171,8 @@ const Header = () => {
                     <div>
                       <Link
                         to="/"
-                        aria-label="Company"
-                        title="Company"
+                        aria-label="Programming Language"
+                        title="Programming Language"
                         className="inline-flex items-center"
                       >
                         <svg

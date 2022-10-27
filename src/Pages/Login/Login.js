@@ -34,7 +34,7 @@ const Login = () => {
         }
       })
       .catch((error) => {
-        console.error(error);
+        toast.error(error.message);
         setError(error.message);
       })
       .finally(() => {
@@ -42,13 +42,14 @@ const Login = () => {
       });
   };
 
-  
-  
   // Google SignIn
   const handleGoogleSignIn = () => {
     signInWithGoogle().then((result) => {
       console.log(result.user);
       navigate(from, { replace: true });
+    })
+    .catch((error) => {
+      toast.error(error.message);;
     });
   };
   // Github SignIn
@@ -61,7 +62,7 @@ const Login = () => {
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log("error:", error);
+        toast.error(error.message);;
       });
   };
 

@@ -16,8 +16,8 @@ const LeftSideNav = () => {
       <div className="mt-8">
         {categories.map((category) => (
           <p key={category.id}>
-            <Link to={`/category/${category.id}`}> <div className="btn-group btn-group-vertical">
-                <button className="btn btn-outline btn-primary mb-5 w-60"> {category.name}</button>
+            <Link to={`/category/${category.id}`} className="ml-10"> <div className="btn-group btn-group-vertical">
+                <button class="custom-btn btn-3 mb-5 w-60">{category.name}</button>
               </div>
             
             </Link>
