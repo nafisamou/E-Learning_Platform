@@ -4,6 +4,7 @@ import Course from "../../assets/programming.json";
 import { FaCode } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+
 const Home = () => {
   return (
     <section>
@@ -13,20 +14,14 @@ const Home = () => {
             <div className="max-w-xl mb-6 lg:mt-8">
               <h2 className="max-w-lg mb-6 font-sans text-3xl font-semibold  tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
                 <span className="inline-block text-blue-500 mt-3 font-sans font-bold">
-                  Programming Language
+               <div className="flex items-center"> <FaCode className="mr-3"></FaCode> Programming Language</div>
                 </span>
               </h2>
               <p className="text-base text-gray-700 md:text-lg">
                 A programming language is a system of notation for writing
                 computer programs.[1] Most programming languages are text-based
                 formal languages, but they may also be graphical. They are a
-                kind of computer language. The description of a programming
-                language is usually split into the two components of syntax
-                (form) and semantics (meaning), which are usually defined by a
-                formal language. Some languages are defined by a specification
-                document (for example, the C programming language is specified
-                by an ISO Standard) while other languages (such as Perl) have a
-                dominant implementation that is treated as a reference. Some
+                kind of computer language.Some
                 languages have both, with the basic language defined by a
                 standard and extensions taken from the dominant implementation
                 being common. Programming language theory is a subfield of
@@ -43,13 +38,13 @@ const Home = () => {
                 <span className="mr-3">Course</span>
                 <FaCode></FaCode>
               </Link>
-              <a
+              <Link
                 href="/blog"
                 aria-label=""
                 className="inline-flex items-center font-semibold text-gray-800 transition-colors duration-200 hover:text-blue-700 text-lg text-blue-400"
               >
                 Learn More...
-              </a>
+              </Link>
             </div>
           </div>
 

@@ -1,3 +1,7 @@
+*{
+margin: 0;
+padding: 0;
+}
 .main-container {
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -104,4 +108,11 @@
 }
 .btn-3 span:hover:after {
   width: 100%;
+}
+
+.bg{
+background-image: url(../../assets/bg-4.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+
 }
