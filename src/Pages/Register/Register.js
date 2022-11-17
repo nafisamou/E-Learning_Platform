@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 import { AuthContext } from "../../contexts/AuthProvider";
+import useTitle from "../Hooks/useTitle";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
@@ -12,6 +13,7 @@ const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  useTitle('Register')
   const {
     createUser,
     updateUserProfile,

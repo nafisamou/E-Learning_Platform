@@ -3,9 +3,11 @@ import Lottie from "lottie-react";
 import Course from "../../assets/programming.json";
 import { FaCode } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useTitle from "../Hooks/useTitle";
 
 
 const Home = () => {
+  useTitle('Home')
   return (
     <section className="">
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-24">

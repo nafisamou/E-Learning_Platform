@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import toast from "react-hot-toast";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useTitle from "../Hooks/useTitle";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ const Login = () => {
   const [user, setUser] = useState({});
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  useTitle('Login')
   const {
     signInWithGoogle,
     resetPassword,
